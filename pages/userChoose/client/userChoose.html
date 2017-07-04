@@ -1,0 +1,114 @@
+<template name="userChoose">
+
+  <div class="jumbotron">
+    <h1>Customrized Meal Plan</h1>
+  </div>
+
+  <h2>Tell me the foods you like to eat</h2>
+  {{> addMeal}}
+  <hr>
+  {{> showMeal}}
+
+  <hr>
+
+  <form method="get" id="testformid">
+      <p>Write your goal below: <input type="submit" /></p>
+  </form>
+  <textarea form ="testformid" name="taname" id="taid" rows="10" cols="50" wrap="soft"></textarea>
+
+  <hr>
+
+  <p><input type="checkbox" id="vegetarian" name="vegan" value="vege">Are you a vegetarian?</p>
+
+  <hr>
+
+  <p>Your food style
+     <select name="select"> <!--Supplement an id here instead of using 'name'-->
+       <option value="value1">American food</option>
+       <option value="value2">Asian food</option>
+       <option value="value3">African food</option>
+     </select></p>
+
+  <hr>
+
+  <p>Your BMI range
+  <form>
+    <input type="radio" name="BMI" value="underweight" checked>below 18.5<br>
+    <input type="radio" name="BMI" value="normal">18.5 - 24.9<br>
+    <input type="radio" name="BMI" value="overweight">25 - 29.9<br>
+    <input type="radio" name="BMI" value="obese">30 above
+  </form></p>
+
+  <hr>
+
+  <p>Input date<input id="thedate" type="date"></p>
+
+  <hr>
+
+  <p>Choose a color for dishwares
+    <input id="dishColor" type="color" size="500">
+  </p>
+
+  <hr>
+
+    <h2>Sample Meal Plan</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Meals</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th>Monday</th>
+          <th>Meal 1</th>
+        </tr>
+        <tr>
+          <th>Tuesday</th>
+          <th>Meal 2</th>
+        </tr>
+        <tr>
+          <th>Wednesday</th>
+          <th>Meal 3</th>
+        </tr>
+        <tr>
+          <th>......</th>
+          <th>......</th>
+        </tr>
+      </tbody>
+
+    </table>
+    <hr>
+
+</template>
+
+<template name="addMeal">
+  Meal name: <input type="text"
+                placeholder="meal name"
+                id="name">
+  Day <input type="text" id="day"><br>
+  <button id="addMeal" class="btn btn-primary btn-s">
+     Add to the Meal Collection
+   </button>
+</template>
+
+<template name="showMeal">
+  {{#if currentUser}}
+  <ul>
+    {{#each m in meallist}}
+      <li>{{> mealrow meal=m}}</li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <h2>Please log in to see your meal plan</h2>
+  {{/if}}
+</template>
+
+<template name="mealrow">
+  {{meal.name}}--{{meal.day}} ({{meal.createAt}})
+  {{#if isOwner}}
+  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  {{/if}}
+</template>

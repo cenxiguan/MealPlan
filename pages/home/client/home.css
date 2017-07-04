@@ -1,0 +1,25 @@
+body {
+  padding:20px;
+  margin:0.2in;
+  color: black;
+  background-color: Oldlace;
+}
+
+h1 {
+  font-size: 4;
+  text-align: left;
+  text-shadow: 1px 1px 5px darkgrey;
+}
+
+h2 {
+  font-size: 3rem;
+  text-align: left;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+p, li {
+  line-height: 1.5;
+}

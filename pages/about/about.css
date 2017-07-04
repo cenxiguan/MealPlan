@@ -1,0 +1,29 @@
+
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 3200px;
+    height: 2000px;
+    background-color: lightgrey;
+}
+
+.flex-item1 {
+    background-color: lightyellow;
+    width: 800px;
+    height: 550px;
+    margin: 10px;
+}
+
+.flex-item2 {
+    background-color: lightyellow;
+    width: 800px;
+    height: 690px;
+    margin: 10px;
+}
+
+.flex-item3 {
+    background-color: lightyellow;
+    width: 800px;
+    height: 480px;
+    margin: 10px;
+}
