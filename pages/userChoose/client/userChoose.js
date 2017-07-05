@@ -25,7 +25,6 @@ Template.addMeal.events({
         console.dir([err,res]);
         }
     );
-    //Meal.insert(chore);
   }
 })
 
@@ -40,5 +39,11 @@ Template.mealrow.events({
       console.log(this);
       console.log(this.meal._id);
       Meteor.call('userChoose.remove', this.meal);
-    }
+    },
+
+    'change select'(elt,instance){
+      console.dir(this);
+      console.log('changed!');
+      Meteor.call('updateday',this.meal,instance.$("select").val())
+  },
 })
