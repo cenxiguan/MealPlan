@@ -1,37 +1,62 @@
 <template name="home">
 
+	<style>
+		.flex {
+			/* basic styling */
+			width: 1150px;
+			height: 250px;
+			border: 1px solid #555;
+			font: 14px Arial;
+
+			/* flexbox setup */
+			display: flex;
+			flex-direction: row;
+		}
+
+		.flex > div {
+			flex: 1 1 auto;
+			width: 30px; /* To make the transition work nicely. (Transitions to/from
+										"width:auto" are buggy in Gecko and Webkit, at least.
+										See http://bugzil.la/731886 for more info.) */
+										transition: width 0.7s ease-out;
+		}
+
+		/* colors */
+		.flex > div:nth-child(1){ background: #00FFFF; }
+		.flex > div:nth-child(2){ background: #00FFFF; }
+		.flex > div:nth-child(3){ background: #00FFFF; }
+		.flex > div:nth-child(4){ background: #00FFFF; }
+		.flex > div:nth-child(5){ background: #00FFFF; }
+		.flex > div:nth-child(6){ background: #00FFFF; }
+		.flex > div:nth-child(7){ background: #00FFFF; }
+
+		.flex > div:hover {
+			width: 200px;
+		}
+
+		section {
+			font-size: 22px;
+			text-align: justify;
+		}
+		</style>
+
 	<div class="jumbotron">
   	<h1> Happy Life Starts with Your Healthy Meal Plan</h1>
 	</div>
 
-	<div class="row">
+	<h1>Nutrition-balanced Meal</h1>
+	<section><em>I love meat, but hate broccoli. I wish I could have ketchup without French fries. However, mom said every meal should be
+		nutrition-balanced.</em></section>
 
-		<div class="col-md-8 col-md-offset-2 bg-info">
-			<h1>Nutrition-balanced Meal</h1>
-			<p><em>I love meat, but hate broccoli. I wish I could have ketchup without French fries. However, mom said every meal should be
-				nutrition-balanced.</em></p>
-			<img src="images/eat2.jpeg" width="90%" alt="Eat"/>
-		</div>
-<!--
-		<div class="col-md-4 col-md-offset-1 bg-info">
-			<h1>My Favorite Food</h1>
-			<ul>
-				<li><p>Favorite Chinese food: Liangpi</p>
-						<p> Liangpi is a noodle-like Chinese dish made from wheat or rice flour.</p>
-					<img src="http://www.kitchenspring.com/wp-content/uploads/2016/04/%E5%87%89%E7%9A%AE.png" width="100%" alt="noodle"/>
-				</li>
-				<li><p>Favorite Mexican food: Burrito bowl</p>
-						<p>A burrito bowl consists of burrito fillings served without the
-							tortilla, with the fillings placed in a
-							 bowl, and a layer of rice at the bottom. </p>
-					<img src="http://ic.pics.livejournal.com/merieka/77179568/41920/41920_900.jpg" width="100%" alt="Chipotle"/>
-				</li>
-				<li><p>Favorite American food: Steak</p>
-				<img src="https://res.cloudinary.com/hpjrd5evp/image/upload/c_fill,h_800,q_70,w_1540/8c87397bb057442880478d880f0ac8f3.jpg" width="100%" alt="Steak"/>
-			</li>
-			</ul>
-		</div>
--->
+
+	<div class="flex">
+		<div><img src="images/eat1.jpeg" width="115%" alt="First"/></div>
+		<div><img src="images/eat2.jpeg" width="115%" alt="Second"/></div>
+		<div><img src="images/eat3.jpeg" width="115%" alt="Third"/></div>
+		<div><img src="images/eat4.jpeg" width="115%" alt="Four"/></div>
+		<div><img src="images/eat5.jpeg" width="115%" alt="Five"/></div>
+		<div><img src="images/eat6.jpeg" width="115%" alt="Six"/></div>
+		<div><img src="images/eat7.jpeg" width="115%" alt="Seven"/></div>
 	</div>
 
 </template>
