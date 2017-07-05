@@ -1,3 +1,8 @@
+// Template.userChoose.onCreated(function() {
+//    Meteor.subscribe('meal');
+// });
+
+
 Template.showMeal.helpers({
   meallist() {return Meal.find()},
 })
