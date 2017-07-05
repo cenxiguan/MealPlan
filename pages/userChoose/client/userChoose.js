@@ -1,6 +1,6 @@
-// Template.userChoose.onCreated(function() {
-//    Meteor.subscribe('meal');
-// });
+Template.userChoose.onCreated(function() {
+   Meteor.subscribe('meal');
+});
 
 
 Template.showMeal.helpers({

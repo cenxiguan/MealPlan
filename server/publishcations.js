@@ -1,3 +1,3 @@
-// Meteor.publish('meal',function(){
-//   return Meal.find();
-// })
+Meteor.publish('meal',function(){
+  return Meal.find();
+})
