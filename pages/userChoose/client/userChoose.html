@@ -4,92 +4,75 @@
     <h1>Build Your Meal Plan</h1>
   </div>
 
-  
-  <h2></h2>
-  <h2>Tell me the foods you like to eat</h2>
-  {{> addMeal}}
+  {{#if currentUser}}
+    {{#if hasProfile}}
+      {{> showprofile}}
+    {{else}}
+      <h2>Input your information to build your meal plan</h2>
+      {{> addprofile}}
+    {{/if}}
+  {{else}}
+    <h2>Please sign-up for an account</h2>
+  {{/if}}
+
+</template>
+
+<template name="addprofile">
+  Name: <input type="text" id="firstname" placeholder="First">
+        <input type="text" id="lastname" placeholder="Last">
   <hr>
-  {{> showMeal}}
-
-  <hr>
-
-  <form method="get" id="testformid">
-      <p>Write your goal below: <input type="submit" /></p>
-  </form>
-  <textarea form ="testformid" name="taname" id="taid" rows="10" cols="50" wrap="soft"></textarea>
-
-  <hr>
-
   <p><input type="checkbox" id="vegetarian" name="vegan" value="vege">Are you a vegetarian?</p>
-
   <hr>
-
+  <p>Your brithdate <input id="thedate" type="date"></p>
+  <hr>
+  <p>Your BMI range
+    <form>
+      <input type="radio" name="BMI" value="underweight" checked>below 18.5<br>
+      <input type="radio" name="BMI" value="normal">18.5 - 24.9<br>
+      <input type="radio" name="BMI" value="overweight">25 - 29.9<br>
+      <input type="radio" name="BMI" value="obese">30 above
+    </form>
+  </p>
+  <hr>
   <p>Your food style
      <select name="select"> <!--Supplement an id here instead of using 'name'-->
-       <option value="value1">American food</option>
-       <option value="value2">Asian food</option>
-       <option value="value3">African food</option>
-     </select></p>
-
+       <option value="value1">Quick &amp; healthy</option>
+       <option value="value2">Kid friendly</option>
+       <option value="value3">Low Calorie</option>
+       <option value="value4">Paleolithic diet</option>
+       <option value="value5">Diabetic</option>
+       <option value="value6">Heart Healthy</option>
+       <option value="value7">All 30 minute meals</option>
+       <option value="value8">Slow cooker</option>
+       <option value="value9">Gluten free</option>
+     </select>
+  </p>
+  <hr>
+  <form method="get" id="testform1">
+      <p>Any food materials that you are allergic to or not acceptable: <input type="submit" /></p>
+  </form>
+  <textarea form ="testformid" name="taname" id="taid" rows="10" cols="50" wrap="soft"></textarea>
   <hr>
 
-  <p>Your BMI range
-  <form>
-    <input type="radio" name="BMI" value="underweight" checked>below 18.5<br>
-    <input type="radio" name="BMI" value="normal">18.5 - 24.9<br>
-    <input type="radio" name="BMI" value="overweight">25 - 29.9<br>
-    <input type="radio" name="BMI" value="obese">30 above
-  </form></p>
-
-  <hr>
-
-  <p>Input date<input id="thedate" type="date"></p>
-
+  <form method="get" id="testform2">
+      <p>Any other information you need to tell us for your meal plan: <input type="submit" /></p>
+  </form>
+  <textarea form ="testformid" name="taname" id="otherinfo" rows="10" cols="50" wrap="soft"></textarea>
   <hr>
 
   <p>Choose a color for dishwares
-    <input id="dishColor" type="color" size="500">
+    <input id="dishColor" type="color" size="200">
   </p>
-
   <hr>
-
-</template>
-
-<template name="addMeal">
-  Meal name: <input type="text"
-                placeholder="meal name"
-                id="name">
-  Day <input type="text" id="day"><br>
   <button id="addMeal" class="btn btn-primary btn-s">
-     Add to the Meal Collection
+     Submit
    </button>
 </template>
 
-<template name="showMeal">
-  {{#if currentUser}}
-  <ul>
-    {{#each m in meallist}}
-      <li>{{> mealrow meal=m}}</li>
-    {{/each}}
-  </ul>
-  {{else}}
-  <h2>Please log in to see your meal plan</h2>
-  {{/if}}
+<template name="showprofile">
 </template>
 
-<template name="mealrow">
-  {{meal.name}}--{{meal.day}} ({{meal.createAt}})
-  {{#if isOwner}}
-  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-  Change:
-  <select>
-    <option>Monday</option>
-    <option>Tuesday</option>
-    <option>Wednesday</option>
-    <option>Thursday</option>
-    <option>Friday</option>
-    <option>Saturday</option>
-    <option>Sunday</option>
-  </select>
-  {{/if}}
+
+<template name="showMeal">
+
 </template>

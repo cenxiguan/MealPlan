@@ -1,25 +1,27 @@
 Template.userChoose.onCreated(function() {
-   Meteor.subscribe('meal');
+   Meteor.subscribe('user');
 });
 
-
-Template.showMeal.helpers({
-  meallist() {return Meal.find()},
+Template.userChoose.helpers({
+  "hasProfile": function(){
+    return User.findOne({owner: Meteor.userId()});
+  }
 })
 
-Template.addMeal.events({
+Template.addprofile.events({
   'click button'(elt,instance) {
-    const name = instance.$('#name').val();
+    const firstname = instance.$('#firstname').val();
+    const lastname = instance.$('#lastname').val();
     const day = instance.$('#day').val();
     //const mealday = parseInt(day);
     console.log('adding '+name);
     instance.$('#name').val("");
     instance.$('#day').val("");
 
-    var userChoose = {name,day,
+    var user = {name,day,
                 owner:Meteor.userId(),
                 createAt:new Date()};
-    Meteor.call('userChoose.insert',userChoose,
+    Meteor.call('user.insert',user,
       (err,res) => {
         console.log('got the answer');
         console.dir([err,res]);
@@ -28,22 +30,6 @@ Template.addMeal.events({
   }
 })
 
-Template.mealrow.helpers({
-  isOwner() {console.dir(this);
-     return this.meal.owner == Meteor.userId()}
-})
+Template.showprofile.helpers({
 
-Template.mealrow.events({
-    'click span'(elt,instance) {
-      console.dir(this);
-      console.log(this);
-      console.log(this.meal._id);
-      Meteor.call('userChoose.remove', this.meal);
-    },
-
-    'change select'(elt,instance){
-      console.dir(this);
-      console.log('changed!');
-      Meteor.call('updateday',this.meal,instance.$("select").val())
-  },
 })
