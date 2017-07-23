@@ -6,7 +6,7 @@ Template.userChoose.helpers({
   "hasProfile": function(){
     return User.findOne({owner: Meteor.userId()});
   }
-})
+});
 
 Template.addprofile.events({
   'click button#submit'(elt,instance) {
@@ -18,8 +18,8 @@ Template.addprofile.events({
     const bmi = instance.$('input[name="bmi"]:checked').val();
     const foodstyle = instance.$('#foodstyle').val();
     const allergy = instance.$('#allergy').val();
-    const otherinfo = instance.$('otherinfo').val();
-    
+    const otherinfo = instance.$('#otherinfo').val();
+
     user = User.find({owner:Meteor.userId()}).fetch();
 
     var user = {firstname: firstname,
@@ -39,8 +39,14 @@ Template.addprofile.events({
         }
     );
   }
-})
+});
 
 Template.showprofile.helpers({
+  "user": function(){
+    return User.findOne({owner: Meteor.userId()});
+  }
+});
 
-})
+Template.showprofile.events({
+
+});
