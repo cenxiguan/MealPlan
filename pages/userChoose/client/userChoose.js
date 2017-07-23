@@ -9,16 +9,27 @@ Template.userChoose.helpers({
 })
 
 Template.addprofile.events({
-  'click button#save'(elt,instance) {
+  'click button#submit'(elt,instance) {
     const firstname = instance.$('#firstname').val();
     const lastname = instance.$('#lastname').val();
-    const day = instance.$('#day').val();
+    const vegetarian = instance.$("#vegetarian").is(":checked");
+    const birthdate = instance.$('#birthdate').val();
     //const mealday = parseInt(day);
-    console.log('adding '+name);
-    instance.$('#name').val("");
-    instance.$('#day').val("");
+    const bmi = instance.$('input[name="bmi"]:checked').val();
+    const foodstyle = instance.$('#foodstyle').val();
+    const allergy = instance.$('#allergy').val();
+    const otherinfo = instance.$('otherinfo').val();
+    
+    user = User.find({owner:Meteor.userId()}).fetch();
 
-    var user = {name,day,
+    var user = {firstname: firstname,
+                lastname: lastname,
+                vegetarian: vegetarian,
+                birthdate: birthdate,
+                bmi: bmi,
+                foodstyle: foodstyle,
+                allergy: allergy,
+                otherinfo: otherinfo,
                 owner:Meteor.userId(),
                 createAt:new Date()};
     Meteor.call('user.insert',user,
