@@ -1,45 +1,5 @@
 <template name="home">
 
-	<style>
-		.flex {
-			/* basic styling */
-			width: 1150px;
-			height: 250px;
-			border: 1px solid #555;
-			font: 14px Arial;
-
-			/* flexbox setup */
-			display: flex;
-			flex-direction: row;
-		}
-
-		.flex > div {
-			flex: 1 1 auto;
-			width: 30px; /* To make the transition work nicely. (Transitions to/from
-										"width:auto" are buggy in Gecko and Webkit, at least.
-										See http://bugzil.la/731886 for more info.) */
-										transition: width 0.7s ease-out;
-		}
-
-		/* colors */
-		.flex > div:nth-child(1){ background: #00FFFF; }
-		.flex > div:nth-child(2){ background: #00FFFF; }
-		.flex > div:nth-child(3){ background: #00FFFF; }
-		.flex > div:nth-child(4){ background: #00FFFF; }
-		.flex > div:nth-child(5){ background: #00FFFF; }
-		.flex > div:nth-child(6){ background: #00FFFF; }
-		.flex > div:nth-child(7){ background: #00FFFF; }
-
-		.flex > div:hover {
-			width: 200px;
-		}
-
-		section {
-			font-size: 22px;
-			text-align: justify;
-		}
-		</style>
-
 	<div class="jumbotron">
   	<h1> Happy Life Starts with Your Healthy Meal Plan</h1>
 	</div>
