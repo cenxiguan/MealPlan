@@ -9,7 +9,7 @@ Template.userChoose.helpers({
 })
 
 Template.addprofile.events({
-  'click button'(elt,instance) {
+  'click button#save'(elt,instance) {
     const firstname = instance.$('#firstname').val();
     const lastname = instance.$('#lastname').val();
     const day = instance.$('#day').val();
