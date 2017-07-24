@@ -52,7 +52,7 @@ Template.showprofile.events({
     console.log("clicked edit");
     instance.$(".showprofilediv").css("display", "none");
     console.log("no profile shown");
-    instance.$(".editprofile").css("display", "block");
+    instance.$(".editinfo").css("display", "block");
   },
 
   'click button#save'(elt, instance) {
@@ -83,7 +83,7 @@ Template.showprofile.events({
         }
     );
 
-    instance.$(".editprofile").css("display", "none");
+    instance.$(".editinfo").css("display", "none");
     instance.$(".showprofilediv").css("display", "block");
   }
 });
