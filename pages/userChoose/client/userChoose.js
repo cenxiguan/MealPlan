@@ -48,5 +48,42 @@ Template.showprofile.helpers({
 });
 
 Template.showprofile.events({
+  'click button#edit'(elt, instance) {
+    console.log("clicked edit");
+    instance.$(".showprofilediv").css("display", "none");
+    console.log("no profile shown");
+    instance.$(".editprofile").css("display", "block");
+  },
 
+  'click button#save'(elt, instance) {
+    const editfirstname = instance.$('.editfirstname').val();
+    const editlastname = instance.$('.editlastname').val();
+    const editvegetarian = instance.$(".editvegetarian").is(":checked");
+    const editbirthdate = instance.$('.editbirthdate').val();
+    //const mealday = parseInt(day);
+    const editbmi = instance.$('input[name="editbmi"]:checked').val();
+    const editfoodstyle = instance.$('.editfoodstyle').val();
+    const editallergy = instance.$('.editallergy').val();
+    const editotherinfo = instance.$('.editotherinfo').val();
+
+    var user = {firstname: editfirstname,
+                lastname: editlastname,
+                vegetarian: editvegetarian,
+                birthdate: editbirthdate,
+                bmi: editbmi,
+                foodstyle: editfoodstyle,
+                allergy: editallergy,
+                otherinfo: editotherinfo,
+                owner:Meteor.userId(),
+                createAt:new Date()};
+    Meteor.call('user.insert',user,
+      (err,res) => {
+        console.log('got the answer');
+        console.dir([err,res]);
+        }
+    );
+
+    instance.$(".editprofile").css("display", "none");
+    instance.$(".showprofilediv").css("display", "block");
+  }
 });

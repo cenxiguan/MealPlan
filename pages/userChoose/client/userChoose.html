@@ -59,7 +59,7 @@
   <p>Choose a color for dishwares
     <input id="dishColor" type="color" size="200">
   </p>
-  
+
   <button id="submit" class="btn btn-primary btn-s">
      Submit
    </button>
@@ -123,4 +123,54 @@
     </button>
 
   </div>
+
+  <div class="editinfo">
+
+    Name: <input type="text" class="editfirstname" value="{{user.firstname}}">
+          <input type="text" class="editlastname" value="{{user.lastname}}">
+    <br>
+    <p><input type="checkbox" class="editvegetarian" name="vegan">Are you a vegetarian?</p>
+
+    <p>Birthdate <input class="editbirthdate" type="date" value="{{user.birthdate}}"></p>
+
+    <p>BMI range
+      <form>
+        <input type="radio" name="editbmi" value="underweight">below 18.5<br>
+        <input type="radio" name="editbmi" value="normal">18.5 - 24.9<br>
+        <input type="radio" name="editbmi" value="overweight">25 - 29.9<br>
+        <input type="radio" name="editbmi" value="obese">30 above
+      </form>
+    </p>
+
+    <p>Food style
+       <select class="editfoodstyle"> <!--Supplement an id here instead of using 'name'-->
+         <option>Quick &amp; healthy</option>
+         <option>Kid friendly</option>
+         <option>Low Calorie</option>
+         <option>Paleolithic diet</option>
+         <option>Diabetic</option>
+         <option>Heart Healthy</option>
+         <option>All 30 minute meals</option>
+         <option>Slow cooker</option>
+         <option>Classic</option>
+       </select>
+    </p>
+
+    <p>Any food materials that you are allergic to or not acceptable: </p>
+    <textarea form ="testform1" name="taname1" class="editallergy" rows="5" cols="50" wrap="soft"></textarea>
+    <br>
+
+    <p>Any other information you need to tell us for your meal plan: </p>
+    <textarea form ="testform2" name="taname2" class="editotherinfo" rows="5" cols="50" wrap="soft"></textarea>
+    <br>
+
+    <p>Choose a color for dishwares
+      <input id="dishColor" type="color" size="200">
+    </p>
+
+    <button id="save" class="btn btn-success btn-s">
+       Save changes
+     </button>
+  </div>
+
 </template>
