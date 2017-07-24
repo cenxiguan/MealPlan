@@ -76,12 +76,7 @@ Template.showprofile.events({
                 otherinfo: editotherinfo,
                 owner:Meteor.userId(),
                 createAt:new Date()};
-    Meteor.call('user.insert',user,
-      (err,res) => {
-        console.log('got the answer');
-        console.dir([err,res]);
-        }
-    );
+    Meteor.call('user.update',Meteor.userId(), user);
 
     instance.$(".editinfo").css("display", "none");
     instance.$(".showprofilediv").css("display", "block");
