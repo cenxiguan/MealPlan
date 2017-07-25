@@ -21,6 +21,8 @@
   Name: <input type="text" id="firstname" placeholder="First">
         <input type="text" id="lastname" placeholder="Last">
   <br>
+  <p>Email: <input type="text" id="email" placeholder="Email"></p>
+
   <p><input type="checkbox" id="vegetarian" name="vegan" value="vege">Are you a vegetarian?</p>
 
   <p>Birthday <input id="birthdate" type="date"></p>
@@ -74,6 +76,11 @@
         <tr>
           <td> Name </td>
           <td> {{user.firstname}} {{user.lastname}} </td>
+        </tr>
+
+        <tr>
+          <td> Email </td>
+          <td> {{user.email}} </td>
         </tr>
 
         <tr>
@@ -135,6 +142,9 @@
     Name: <input type="text" class="editfirstname" value="{{user.firstname}}">
           <input type="text" class="editlastname" value="{{user.lastname}}">
     <br>
+
+    <p>Email: <input type="text" class="editemail" value="{{user.email}}"></p>
+
     <p><input type="checkbox" class="editvegetarian" name="vegan" value="{{user.vegetarian}}">Are you a vegetarian?</p>
 
     <p>Birthday <input class="editbirthdate" type="date" value="{{user.birthdate}}"></p>

@@ -13,6 +13,7 @@ Template.addprofile.events({
   'click button#submit'(elt,instance) {
     const firstname = instance.$('#firstname').val();
     const lastname = instance.$('#lastname').val();
+    const email = instance.$('#email').val();
     const vegetarian = instance.$("#vegetarian").is(":checked");
     const birthdate = instance.$('#birthdate').val();
     const bmi = instance.$('input[name="bmi"]:checked').val();
@@ -24,6 +25,7 @@ Template.addprofile.events({
 
     var user = {firstname: firstname,
                 lastname: lastname,
+                email: email,
                 vegetarian: vegetarian,
                 birthdate: birthdate,
                 bmi: bmi,
@@ -54,13 +56,13 @@ Template.showprofile.helpers({
 Template.showprofile.events({
   'click button#edit'(elt, instance) {
     instance.$(".showprofilediv").css("display", "none");
-    //instance.$(".payment").css("display", "none");
     instance.$(".editinfo").css("display", "block");
   },
 
   'click button#save'(elt, instance) {
     const editfirstname = instance.$('.editfirstname').val();
     const editlastname = instance.$('.editlastname').val();
+    const editemail = instance.$('.editemail').val();
     const editvegetarian = instance.$(".editvegetarian").is(":checked");
     const editbirthdate = instance.$('.editbirthdate').val();
     const editbmi = instance.$('input[name="editbmi"]:checked').val();
@@ -70,6 +72,7 @@ Template.showprofile.events({
 
     var user = {firstname: editfirstname,
                 lastname: editlastname,
+                email: editemail,
                 vegetarian: editvegetarian,
                 birthdate: editbirthdate,
                 bmi: editbmi,
