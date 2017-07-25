@@ -23,7 +23,7 @@
   <br>
   <p><input type="checkbox" id="vegetarian" name="vegan" value="vege">Are you a vegetarian?</p>
 
-  <p>Birthdate <input id="birthdate" type="date"></p>
+  <p>Birthday <input id="birthdate" type="date"></p>
 
   <p>BMI range
     <form>
@@ -86,7 +86,7 @@
         </tr>
 
         <tr>
-          <td> Birthdate </td>
+          <td> Birthday </td>
           <td> {{user.birthdate}} </td>
         </tr>
 
@@ -119,9 +119,15 @@
     </table>
 
     <button id="edit" class="btn btn-info btn-s">
-      Edit information
+      Edit
     </button>
 
+    {{#if hasPayment}}
+      {{> addpayment}}
+      {{> showpayment}}
+    {{else}}
+      {{> addpayment}}
+    {{/if}}
   </div>
 
   <div class="editinfo">
@@ -129,9 +135,9 @@
     Name: <input type="text" class="editfirstname" value="{{user.firstname}}">
           <input type="text" class="editlastname" value="{{user.lastname}}">
     <br>
-    <p><input type="checkbox" class="editvegetarian" name="vegan">Are you a vegetarian?</p>
+    <p><input type="checkbox" class="editvegetarian" name="vegan" value="{{user.vegetarian}}">Are you a vegetarian?</p>
 
-    <p>Birthdate <input class="editbirthdate" type="date" value="{{user.birthdate}}"></p>
+    <p>Birthday <input class="editbirthdate" type="date" value="{{user.birthdate}}"></p>
 
     <p>BMI range
       <form>
@@ -157,11 +163,11 @@
     </p>
 
     <p>Any food materials that you are allergic to or not acceptable: </p>
-    <textarea form ="testform1" name="taname1" class="editallergy" rows="5" cols="50" wrap="soft"></textarea>
+    <textarea form ="testform1" name="taname1" class="editallergy" value="{{user.allergy}}" rows="5" cols="50" wrap="soft"></textarea>
     <br>
 
     <p>Any other information you need to tell us for your meal plan: </p>
-    <textarea form ="testform2" name="taname2" class="editotherinfo" rows="5" cols="50" wrap="soft"></textarea>
+    <textarea form ="testform2" name="taname2" class="editotherinfo" value="{{user.otherinfo}}" rows="5" cols="50" wrap="soft"></textarea>
     <br>
 
     <p>Choose a color for dishwares
@@ -173,4 +179,65 @@
      </button>
   </div>
 
+</template>
+
+
+<template name="addpayment">
+  <div class="payment">
+    <h2>Complete your Payment Details</h2>
+    <p>Name on your card: <input type="text" id="nameoncard"></p>
+    <p>Card number: <input type="text" id="creditcard">
+      <img src="https://compupartners.com/wp-content/uploads/2016/06/credit_card_logos.jpg" width=150 alt="credit card">
+    </p>
+    <p>Expiration Date:
+      <select id="month">
+        <option>01</option>
+        <option>02</option>
+        <option>03</option>
+        <option>04</option>
+        <option>05</option>
+        <option>06</option>
+        <option>07</option>
+        <option>08</option>
+        <option>09</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+      </select>
+      <select id="year">
+        <option>2017</option>
+        <option>2018</option>
+        <option>2019</option>
+        <option>2020</option>
+        <option>2021</option>
+        <option>2022</option>
+        <option>2023</option>
+        <option>2024</option>
+        <option>2025</option>
+      </select>
+    </p>
+    <p>Security Code: <input type="text" id="securitycode"></p>
+    <p>Zip Code: <input type="text" id="zipcode"></p>
+    <p>Phone number: <input type="text" id="phonenumber"></p>
+    <button id="save" class="btn btn-info btn-s">
+       Add Credit Card
+    </button>
+  </div>
+</template>
+
+<template name="showpayment">
+  <h2>Your payment methods: (check the one used for this order)</h2>
+  <ol>
+  {{#each card in paymentlist}}
+    <li>{{> cardrow card=card}}</li>
+  {{/each}}
+  </ol>
+  <button id="order" class="btn btn-danger btn-s">
+     Place Order
+  </button>
+</template>
+
+<template name="cardrow">
+  <input type="checkbox" id="vegetarian"><strong>{{card.name}}'s credit card: {{card.cardnumb}}
+  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></strong><br>
 </template>
