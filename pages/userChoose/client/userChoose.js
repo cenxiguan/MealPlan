@@ -125,7 +125,7 @@ Template.showpayment.helpers({
 
 Template.showpayment.events({
   'click button'(elt, instance) {
-    alert("Your meal plan will be sent to your email address within 24 hours.");
+    Router.go('ordered');
   }
 })
 
