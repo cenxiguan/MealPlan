@@ -48,8 +48,14 @@ Template.showpayment.helpers({
 });
 
 Template.showpayment.events({
-  'click button'(elt, instance) {
-    Router.go('ordered');
+  'click button#order'(elt, instance) {
+    var checked = $("input[type=checkbox]:checked").length;
+    if (checked) {
+      Router.go('ordered');
+    } else {
+      alert("You must check a payment before ordering!");
+    }
+
   }
 })
 
