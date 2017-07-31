@@ -1,6 +1,5 @@
 Template.userChoose.onCreated(function() {
    Meteor.subscribe('user');
-   Meteor.subscribe('payment');
 });
 
 Template.userChoose.helpers({
@@ -59,6 +58,10 @@ Template.showprofile.events({
     instance.$(".editinfo").css("display", "block");
   },
 
+  'click button#next'(elt, instance) {
+    Router.go('paymentinfo');
+  },
+
   'click button#save'(elt, instance) {
     const editfirstname = instance.$('.editfirstname').val();
     const editlastname = instance.$('.editlastname').val();
@@ -88,49 +91,3 @@ Template.showprofile.events({
     //instance.$(".payment").css("display", "none");
   }
 });
-
-Template.addpayment.events({
-  'click button#save'(elt,instance) {
-    const name = instance.$('#nameoncard').val();
-    const cardnumb = instance.$('#creditcard').val();
-    const expMonth = instance.$('#month').val();
-    const expYear = instance.$("#year").val();
-    const security = instance.$('#securitycode').val();
-    const zipcode = instance.$('#zipcode').val();
-    const phone = instance.$('#phonenumber').val();
-
-    var payment = {
-                name: name,
-                cardnumb: cardnumb,
-                expMonth: expMonth,
-                expYear: expYear,
-                security: security,
-                zipcode: zipcode,
-                phone: phone,
-                owner: Meteor.userId()};
-    Meteor.call('payment.insert',payment,
-      (err,res) => {
-        console.log('got the answer');
-        console.dir([err,res]);
-        }
-    );
-  }
-})
-
-Template.showpayment.helpers({
-  "paymentlist": function(){
-    return Payment.find({owner: Meteor.userId()});
-  }
-});
-
-Template.showpayment.events({
-  'click button'(elt, instance) {
-    Router.go('ordered');
-  }
-})
-
-Template.cardrow.events({
-  'click span'(elt, instance) {
-    Meteor.call('payment.remove',this.card);
-  }
-})
