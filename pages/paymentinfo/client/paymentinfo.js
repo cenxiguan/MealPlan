@@ -55,7 +55,6 @@ Template.showpayment.events({
     } else {
       alert("You must check a payment before ordering!");
     }
-
   }
 })
 
